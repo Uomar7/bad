@@ -6,12 +6,21 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
 
-
+    Gender =[
+        ('male','male'),
+        ('female','female'),
+    ]
+    
+    Position = [
+        ('Doctor','Doctor'),
+        ('Nurse','Nurse'),
+        ('Volunteer','Volunteer'),
+    ]
     first_name = models.CharField(max_length = 40)
     last_name = models.CharField(max_length = 40)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    gender = models.CharField(max_length = 30 )
-    position = models.CharField(max_length = 50)
+    gender = models.CharField(max_length = 30, choices=Gender,default='select your Gender' )
+    position = models.CharField(max_length = 50, choices = Position, default='select your position')
     bio = models.TextField(max_length=500, blank=True)
     pic = models.ImageField(upload_to = 'avatar/', blank=True, default='no profile pic')
     work_id = models.CharField(max_length=30, blank=True)

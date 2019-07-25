@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 urlpatterns=[
 
     url('^$',views.welcome,name='welcome'),
-    url(r'^new/profile/(\d+)$', views.new_profile, name='new-profile'),    
+    url(r'^new/profile/$', views.new_profile, name='new-profile'),    
     url(r'^profile/$',views.profile,name='profile'),
-
+    url(r'^scan/$',views.scan,name='scan'),
     # * urls for the api
     url(r'^api/profile/$',views.ProfileList.as_view()),
     url(r'^api/original/$',views.OriginalList.as_view()),

@@ -3,24 +3,28 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile, Extracted_data, Original_image 
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
-from django.contrib.auth.models import User
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 from .permissions import IsAdminOrReadOnly
+from django.db import transaction
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from rest_framework import status
 from .forms import NewProfileForm
 
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def welcome(request):
     
     return render(request,'index.html')
-@login_required(login_url='/accounts/login/')      
-def new_profile(request,id):
+
+@login_required(login_url='/accounts/login/')  
+@transaction.atomic    
+def new_profile(request):
     user = request.user
+    current_user = Profile.objects.get(user=user)
     if request.method == 'POST':
-        form = NewProfileForm(request.POST, request.FILES)
+        form = NewProfileForm(request.POST, request.FILES,instance=current_user)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = user
@@ -30,6 +34,7 @@ def new_profile(request,id):
         form = NewProfileForm()
     return render(request, 'new-profile.html', {"form":form,"user":user})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
