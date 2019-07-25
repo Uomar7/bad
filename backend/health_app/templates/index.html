@@ -2,5 +2,62 @@
 {% load bootstrap4 %}
 {% block content %}
 {% load staticfiles %}
+{% load static %}
 {{block.super}}
+<div class="container-fluid"> <div class="overlay"><div class = "hover"><span style="color:#ff4444;">F</span>orm   <span style="color:#ff4444">S</span>canner</div>
+
+    <style>
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color:#ff4444;
+          color: white;
+          text-align: center;
+        }
+        .container-fluid{
+     background-image: url('https://image.shutterstock.com/image-photo/scanning-files-searching-processing-antivirus-260nw-398049988.jpg');
+     height: 600px;
+     width: auto;
+     background-repeat: no-repeat;
+     background-position: cover;
+     background-size: 90%;
+    }
+    .overlay{
+        
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  height:30%;
+  transform: translateY(30vh);
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 100px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.2;
+  font-family: 'Fredericka the Great', cursive;
+
+}
+.container-fluid .overlay {
+  opacity: 1;
+  width: 100%;
+}
+.overlay:hover{
+   font-size:150px;
+
+}
+    
+        </style>
+        
+        
+  </div>
+</div>
+  <div class="footer">
+        <p>© 2018 Copyright:Health-E-Net</p>
+      </div>
 {% endblock %}

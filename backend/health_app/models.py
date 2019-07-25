@@ -8,11 +8,11 @@ class Profile(models.Model):
 
     first_name = models.CharField(max_length = 40)
     last_name = models.CharField(max_length = 40)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE , primary_key=True)
     gender = models.CharField(max_length = 30 )
     position = models.CharField(max_length = 50)
     bio = models.TextField(max_length=500, blank=True)
-    pic = models.ImageField(upload_to = 'avatar/', blank=True, default='')
+    pic = models.ImageField(upload_to = 'avatar/', blank=True)
     work_id = models.CharField(max_length=30, blank=True)
     hospital_name = models.CharField(max_length = 54, null=True, blank=True)
 

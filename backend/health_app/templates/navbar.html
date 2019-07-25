@@ -4,9 +4,9 @@
         <nav  style="font-family: 'Amatic SC', cursive; background-color: #ff4444;" >
             <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white;"><span style="color:black; font-size: 35px;">F</span>orm   <span style="color:black ;font-size: 30px"> S</span>canner</a>
             <a class="navbar-brand" href="" style="color:white;">Scan</a>
-            <a class="navbar-brand" href="{% url 'profile' %}" style="color:white;"> Profile</a>
-            <a class="navbar-brand" href="{% url 'new-profile' user.id %}" style="color:white;">  Edit Profile</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="" style="color:white;"> Profile</a>
+           
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon" style="color:white ">Account</span>
             
           <div style="float: right;">
@@ -30,7 +30,18 @@
               {% endif %}
     
             </div>
-          </button>
+          </button> -->
+          <div class="navbar-toggler" style="float:right;">
+            <a class="btn btn-link-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'new-profile' user.id %}">Edit profile</a>
+              <a class="dropdown-item" href="/accounts/password/change">Change password</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </div>
         </div>
           </nav>
           </div>
