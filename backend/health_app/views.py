@@ -1,14 +1,41 @@
-from django.shortcuts import render
+from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
+from django.contrib.auth.decorators import login_required
+from .models import Profile, Extracted_data, Original_image 
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,Http404
+from django.contrib.auth.models import User
+from rest_framework.response import Response
+from .permissions import IsAdminOrReadOnly
+from rest_framework.views import APIView
 from django.http import JsonResponse
 from rest_framework import status
-from .models import Profile, Extracted_data, Original_image 
-from django.contrib.auth.models import User
+from .forms import NewProfileForm
 
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
-from .permissions import IsAdminOrReadOnly
 
+@login_required(login_url='/accounts/login/')
+def welcome(request):
+    
+    return render(request,'index.html')
+@login_required(login_url='/accounts/login/')      
+def new_profile(request,id):
+    user = request.user
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = user
+            profile.save()
+        return redirect('profile')
+    else:
+        form = NewProfileForm()
+    return render(request, 'new-profile.html', {"form":form,"user":user})
+
+def profile(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    
+    return render(request, 'profile-page.html',{"profile":profile})
+    
 # ! view function to view different forms and add a form or scan a form.
 def scan(request):
     current_user = request.user
@@ -107,6 +134,7 @@ class ProfileDescr(APIView):
             serializers.save()
             return Response(serializers.data)
         else:
+            
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, format=None):
@@ -175,3 +203,5 @@ class ExtractDescr(APIView):
         extract =self.get_extract(pk)
         extract.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
+
+
