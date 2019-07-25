@@ -1,0 +1,42 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container ">
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      
+      
+        <form  action="/accounts/login/" method="post" style="border: 2px solid lightgrey; padding:10%; background-color:white;" class="mt-5">
+            <h4 style="font-family:'Lobster Two', sans-serif;" class="text-center">Form Scanner</h4>
+          {% csrf_token %}
+          {% bootstrap_form form %}
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-sm" value="Login">
+          </div><div class="row" style="border: 2px solid lightgrey; padding:7%; background-color:white;">
+            <p>Don't have an account? <a href="/accounts/register">Sign Up</a></p>
+          </div>
+
+
+
+          <input type="hidden" name="next" value="{{next}}">
+
+
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+</div>
+</div>
+
+
+
+
+{% endblock %}

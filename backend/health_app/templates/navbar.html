@@ -1,41 +1,47 @@
-<nav style="background-color: #ff4444;color: white;">
-    <a class="navbar-brand" href="{% url 'welcome' %}">|  <i class="fa fa-camera-retro"></i> | Instaclone</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <div class="col-sm-6 col-md-6">
-          {% if user.is_authenticated %}
-          <ul>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user fa-lg"></i>
-                    </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'new-post' %}">Create Post</a>
-                  <a class="dropdown-item" href="{% url 'new-profile' user.id %}">Create Profile</a>                  
-                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a> 
-                  <a href="{%url 'welcome'%}" class="dropdown-item">Home</a>
-                  <a href="/accounts/password/change" class="dropdown-item">Change Password</a>
-                  <a href="/logout" class="dropdown-item">Logout</a>
-                
-            </li>
-        
-          {% else %}
-          <li>
-            <a class='btn btn-default' href="/accounts/login">Login</a>
-          </li>
 
-          {% endif %}
-        </div>
-      </div>
-      
-        <form class="form-inline" role="search" action="{% url 'search_results' %}" style="color:black;">
-          <input class="form-control mr-sm-2 search_bar text-center" type="search" placeholder="Search" aria-label="Search" name="username" style="color:black;">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="color:black;"><i class="fa fa-search"></i></button>
-        </form>
     
-  
-  </nav>
+    <div style="font-size: 30px;">  
+        <nav  style="font-family: 'Amatic SC', cursive; background-color: #ff4444;" >
+            <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white;"><span style="color:black; font-size: 35px;">F</span>orm   <span style="color:black ;font-size: 30px"> S</span>canner</a>
+            <a class="navbar-brand" href="" style="color:white;">Scan</a>
+            <a class="navbar-brand" href="" style="color:white;"> Profile</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" style="color:white ">Account</span>
+            
+          <div style="float: right;">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent" >
+              <ul class="navbar-nav mr-auto navbar-right">
+                
+                
+                <li class="nav-item dropdown" style="float:right;">
+                        {% if user.is_authenticated %}
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>o</span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    <a class="dropdown-item" href="#">Change password</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                    
+                </li>
+                
+              </ul>
+              {% endif %}
+    
+            </div>
+          </button>
+        </div>
+          </nav>
+          </div>
+    
+    <style>
+    .navbar-brand{
+        color:white;
+        transition:0.7s
+    }
+    .navbar-brand:hover{
+        color:rgb(105, 1, 1);
+    
+        font-size:20px
+    }
+    </style>
