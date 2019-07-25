@@ -9,6 +9,13 @@ from rest_framework.views import APIView
 from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
 from .permissions import IsAdminOrReadOnly
 
+# ! view function to view different forms and add a form or scan a form.
+def scan(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    return render(request, 'scan.html',{'profile':profile})
+
+    
 # * serializing the Django User model
 class UserList(APIView):
     permission_classes = (IsAdminOrReadOnly,)
