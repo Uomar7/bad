@@ -4,7 +4,8 @@
         <nav  style="font-family: 'Amatic SC', cursive; background-color: #ff4444;" >
             <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white;"><span style="color:black; font-size: 35px;">F</span>orm   <span style="color:black ;font-size: 30px"> S</span>canner</a>
             <a class="navbar-brand" href="" style="color:white;">Scan</a>
-            <a class="navbar-brand" href="" style="color:white;"> Profile</a>
+            <a class="navbar-brand" href="{% url 'profile' %}" style="color:white;"> Profile</a>
+            <a class="navbar-brand" href="{% url 'new-profile' user.id %}" style="color:white;">  Edit Profile</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon" style="color:white ">Account</span>
             
@@ -20,8 +21,8 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     
-                    <a class="dropdown-item" href="#">Change password</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="/accounts/password/change">Change password</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                     
                 </li>
                 
