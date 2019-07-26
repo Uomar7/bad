@@ -1,7 +1,7 @@
 
     
-    <div style="font-size: 30px;">  
-        <nav  style="font-family: 'Amatic SC', cursive; background-color: #ff4444;" >
+    <div style="font-size: 30px;font-family: 'Slabo 27px', serif;">  
+        <nav  style="background: linear-gradient(to right,#fb6767,#ff4444) " >
             <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white;"><span style="color:black; font-size: 35px;">F</span>orm   <span style="color:black ;font-size: 30px"> S</span>canner</a>
             <a class="navbar-brand" href="{% url 'scan' %}" style="color:white;">Scan</a>
             <a class="navbar-brand" href="{% url 'profile' %}" style="color:white;"> Profile</a>
@@ -37,7 +37,7 @@
             </a>
           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'new-profile' user.id %}">Edit profile</a>
+              <a class="dropdown-item" href="{% url 'new-profile' %}">Edit profile</a>
               <a class="dropdown-item" href="/accounts/password/change">Change password</a>
               <a class="dropdown-item" href="/logout">Logout</a>
             </div>
