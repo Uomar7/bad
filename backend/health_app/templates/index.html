@@ -4,10 +4,10 @@
 {% load staticfiles %}
 {% load static %}
 {{block.super}}
-<div class="container-fluid"> <div class="overlay" style="font-family: 'Bungee Outline', cursive;"><div class = "hover"><span style="color:#ff4444;">F</span>orm   <span style="color:#ff4444">S</span>canner</div>
+<div class=""> <div class="overlay"><div class = "hover"><span style="color:#ff4444;">F</span><span style="color:black;">orm</span>   <span style="color:#ff4444">S</span><span style="color:black;">canner</span></div>
 
     <style>
-        .footer {
+        /* .footer {
           position: fixed;
           left: 0;
           bottom: 0;
@@ -15,9 +15,9 @@
           background-color:#ff4444;
           color: white;
           text-align: center;
-        }
+        } */
         .container-fluid{
-     background-image: url('https://image.shutterstock.com/image-photo/scanning-files-searching-processing-antivirus-260nw-398049988.jpg');
+     background-image: url('');
      height: 600px;
      width: auto;
      background-repeat: no-repeat;
@@ -27,23 +27,23 @@
     .overlay{
         
   bottom: 0; 
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  color: #f1f1f1; 
+  background: rgb(245, 243, 243);
+  background: rgb(245, 243, 243); /* Black see-through */
+  color: #f1f1f1;
   width: 100%;
   height:30%;
-  transform: translateY(30vh);
+  transform: translateY(0vh);
   transition: .5s ease;
   opacity:0;
   color: white;
   font-size: 100px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   transition: 0.2;
   font-family: 'Fredericka the Great', cursive;
 
 }
-.container-fluid .overlay {
+ .overlay {
   opacity: 1;
   width: 100%;
 }
@@ -51,13 +51,149 @@
    font-size:150px;
 
 }
+
     
         </style>
         
         
   </div>
-</div>
-  <div class="footer">
-        <p>© 2018 Copyright:Health-E-Net</p>
+  <section class="text-left py-5" style="background-color:rgb(245, 243, 243);color: antiquewhite;">
+    
+  </section>
+  <section class="text-center py-5" style="background-color: #ff4444 ; height: 70%;" id="column-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+        <h4>Simple</h4>
+        <p>Form scanner is easy to use and makes the user experience hassle free</p>
+        <p></p>
+        </div>
+        <div class="col-sm-4">
+          <h4>Quality</h4>
+          <p>Automated form processing ensures that information remains of high quality.</p>
+        </div>
+        <div class="col-sm-4">
+          <h4>Convinient</h4>
+          <p>Form scanner, captures information from the defined template forms. Just put your forms into Form Scanner and let our data capture software do the rest for you.</p>
+        </div>
       </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+     
+    <div class="card card-cascade wider">
+
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img  class="card-img-top" src="https://images.pexels.com/photos/1893486/pexels-photo-1893486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+      
+          <!-- Title -->
+          <h4 class="card-title"><strong>Simple</strong></h4>
+          <!-- Subtitle -->
+          <h5 class="blue-text pb-2"><strong>Scan</strong></h5>
+          <!-- Text -->
+          <p class="card-text">Form scanner is easy to use and makes the user experience hassle free. </p>
+      
+          <!-- Linkedin -->
+          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+          <!-- Twitter -->
+          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+          <!-- Dribbble -->
+          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+      
+        </div>
+      
+      </div>
+      </div>
+    
+      <!-- Card Wider -->
+      
+      <!-- Card Narrower -->
+      
+      
+          <div class="col-md-4">
+      <div class="card card-cascade wider">
+      
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img  class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/04/20/24/ecg-1953179_960_720.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body card-body-cascade">
+      
+          <!-- Label -->
+          <h5 class="pink-text pb-2 pt-1"> Convinient</h5>
+          <!-- Title -->
+          <h4 class="font-weight-bold card-title">Fast</h4>
+          <!-- Text -->
+          <p class="card-text">Automated form processing ensures that information remains of high quality.</p>
+          <!-- Button -->
+          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+          <!-- Twitter -->
+          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+          <!-- Dribbble -->
+          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+      
+      
+        </div>
+      
+      </div>
+          </div>
+      <!-- Card Narrower -->
+      <div class="col-md-4">
+      <!-- Card Regular -->
+      <div class="card card-cascade">
+      
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/03/13/09/56/checklist-3222079_960_720.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+      
+          <!-- Title -->
+          <h4 class="card-title"><strong>Quality</strong></h4>
+          <!-- Subtitle -->
+          <h6 class="font-weight-bold indigo-text py-2"></h6>
+          <!-- Text -->
+          <p class="card-text">Form scanner, captures information from the defined template forms. Just put your forms into Form Scanner and let our data capture software do the rest for you.
+          </p>
+      
+          <!-- Facebook -->
+          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+          <!-- Twitter -->
+          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+          <!-- Dribbble -->
+          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+      
+        </div>
+      
+      </div>
+      <!-- Card Regular -->
+      </div>
+    </div>
+  </div>
+  </section>
+  
+    </div>
+    </div>
+</div>
+  <!-- /* <div class="footer">
+        <p>© 2018 Copyright:Health-E-Net</p>
+      </div> */ -->
 {% endblock %}

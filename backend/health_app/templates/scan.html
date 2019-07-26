@@ -17,18 +17,24 @@
                     <div class="row">
                         <h5 class="card-text heads">Forms</h5>
                     </div>
+                    {% for form in forms %}
                     <div class="row">
-                        {% for form in forms %}
-                        <p>{{form.sickness_name}}</p>
-                        {% endfor %}
+                        <li>{{form.sickness_form}}</li>
+                        <a style="margin-left: 2.4rem; align-items:center" class="btn btn-danger btn-sm" href="{% url 'delete' form.id %}">delete</a>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <h5 class="card-text heads text-center">Content display</h5>
+                        <h5 class="card-text heads text-center">Create form</h5>
                     </div>
                     <div class="row">
+                        <form action="{% url 'scan' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form layout='inline' %}
+                            <input type="submit" class="btn btn-success btn-sm" value="Create form">
 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -36,9 +42,10 @@
     </div>
 </div>
 <style>
- .heads{
-     margin-left: 2rem;
- }
+    .heads {
+        margin-left: 2rem;
+        padding-bottom: 1.5rem;
+    }
 </style>
 
 

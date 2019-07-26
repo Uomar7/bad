@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^new/profile/$', views.new_profile, name='new-profile'),    
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^scan/$',views.scan,name='scan'),
+    url(r'^del/(\d+)$',views.delete_item,name='delete'),
     # * urls for the api
     url(r'^api/profile/$',views.ProfileList.as_view()),
     url(r'^api/original/$',views.OriginalList.as_view()),
