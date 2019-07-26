@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="/backend/static/css/scan.css">
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="card">
+        <h2 class="card-header text-center">Information</h2>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h5 class="card-text heads">Forms</h5>
+                    </div>
+                    <div class="row">
+                        {% for form in forms %}
+                        <p>{{form.sickness_name}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <h5 class="card-text heads text-center">Content display</h5>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+ .heads{
+     margin-left: 2rem;
+ }
+</style>
+
+
+{% endblock %}
