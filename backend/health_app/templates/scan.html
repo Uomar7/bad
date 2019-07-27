@@ -40,6 +40,13 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        {% for form in forms %} 
+    <div class="card">
+        <img src="{{form.image.url}}" alt="" class="card-image img-responsive">
+    </div>
+    {% endfor %}
+</div>
 </div>
 <style>
     .heads {
