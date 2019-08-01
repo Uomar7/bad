@@ -36,6 +36,10 @@ class Original_image(models.Model):
 
     def __str__(self):
         return self.sickness_form
+    
+    # def delete_item(request,id):
+    # item = Original_image.objects.get(id = id)
+    # item.delete()
 
 class Extracted_data(models.Model):
     original = models.ForeignKey(Original_image,related_name='extracts')

@@ -1,0 +1,19 @@
+/* .heads:last-child {
+    margin-left: 2rem;
+}
+
+.heads {
+    display: flex;
+    justify-items: center;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 0;
+    margin-left: 50%;
+}
+
+.heads:hover {
+    cursor: pointer;
+} */

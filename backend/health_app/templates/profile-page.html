@@ -6,25 +6,25 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <img src="" alt="" width="150px" height="150px" class="rounded-circle">
+        <img src="{{profile.pic.url}}" alt="" width="240px" height="240px" class="rounded-circle ">
       </div>
       <div class="col-md-6 col-sm-12">
       <div class="">
         <div class="">
-          <b><p style="font-family: 'Metal Mania', cursive;">{{user.username}}</p></b>
+          <b><h3 style="font-family: 'Slabo 27px', serif;">{{user.username}}</h3></b>
         </div>
         <div class="button">
-          <a href="{%url 'new-profile' %}" style="border:1px solid lightgrey;border-radius:2px;color:black;text-decoration:none">Edit</a></span>
+          <a href="{%url 'new-profile' %}" class="btn btn-primary btn-sm" style="font-family: 'Slabo 27px', serif;">Edit profile</a></span>
         </div>
-        <div class="cog" style="font-family: 'Metal Mania', cursive;">
+        <div class="cog" style="font-family: 'Slabo 27px', serif;">
           
           
         </div>
       </div><br><br>
-      <h2 style="font-family: 'Metal Mania', cursive;">Bio</h2>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.position}}</p>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.hospital_name}}</p>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.bio}}</p>
+      <h3 style="font-family: 'Slabo 27px', serif;">Bio</h3>
+    <p style="font-family: 'Slabo 27px', serif;">{{profile.position}}</p>
+    <p style="font-family: 'Slabo 27px', serif;">{{profile.hospital_name}}</p>
+    <p style="font-family: 'Slabo 27px', serif;">{{profile.bio}}</p>
     
     
     

@@ -1,16 +1,16 @@
 from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
-from django.contrib.auth.decorators import login_required
+from .forms import NewProfileForm,NewOriginalForm,Extracted_data
 from .models import Profile, Extracted_data, Original_image 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .permissions import IsAdminOrReadOnly
-from django.db import transaction
 from rest_framework.views import APIView
 from django.http import JsonResponse
+from django.db import transaction
 from rest_framework import status
-from .forms import NewProfileForm
 
 
 # @login_required(login_url='/accounts/login/')
@@ -45,9 +45,31 @@ def profile(request):
 def scan(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
-    return render(request, 'scan.html',{'profile':profile})
+    forms = Original_image.objects.all()
+    print(forms)
+    if request.method == 'POST':
+        form = NewOriginalForm(request.POST,request.FILES)
+        if form.is_valid():
+            if Original_image.objects.filter(sickness_form__icontains = form.cleaned_data['sickness_form']):
+                error='Form already exists'           
+            else:
+                new = form.save(commit=False)
+                new.posted_by = profile
+                new.save()
 
+                return redirect('scan')
+    else:
+        form = NewOriginalForm()
+    return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms})
+
+def delete_item(request,image_id):
+    # current_user = request.user
+    # item = Original_image.objects.get(id =image_id)
+    if request.user:
+        Original_image.objects.get(id =image_id).delete()
     
+    return redirect('scan')
+
 # * serializing the Django User model
 class UserList(APIView):
     permission_classes = (IsAdminOrReadOnly,)
