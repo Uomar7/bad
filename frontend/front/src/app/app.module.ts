@@ -9,6 +9,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LandingComponent } from './landing/landing.component';
 import { StatsComponent } from './stats/stats.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes:Routes = [
   {path:"landing",component:LandingComponent},
@@ -22,7 +24,9 @@ const routes:Routes = [
     ProfileComponent,
     LandingComponent,
     StatsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
