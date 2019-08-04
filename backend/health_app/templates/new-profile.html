@@ -1,3 +1,4 @@
+{%extends 'base.html'%}
 {% load bootstrap4 %}
 {% load staticfiles %}
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-
+  {% block content %}
   <div class="container">
     <div class="card mt-5">
       <div class="card-body">
@@ -25,13 +26,13 @@
           {%csrf_token%}
 
           {% bootstrap_form form%}
-          <input type="submit" class="btn btn-success btn-lg" value="Post">
+          <input type="submit" class="btn btn-success btn-sm" value="Post">
         </form>
       </div>
     </div>
 
   </div>
-
+{% endblock %}
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}

@@ -1,0 +1,26 @@
+nav {
+    position: static;
+    background: red;
+}
+
+.navbar-brand {
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.navbar-brand:hover {
+    color: whitesmoke;
+}
+
+.nav-link {
+    color: rgb(0, 0, 0);
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    color:whitesmoke;
+    transition: .2s;
+    transform: scale(1.05,1.05);
+    font-weight: bold;
+}
