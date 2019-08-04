@@ -23,8 +23,8 @@ class Profile(models.Model):
     position = models.CharField(max_length = 50, choices = Position, default='select your position')
     bio = models.TextField(max_length=500, blank=True)
     pic = models.ImageField(upload_to = 'avatar/', blank=True, default='no profile pic')
-    work_id = models.CharField(max_length=30, blank=True)
-    hospital_name = models.CharField(max_length = 54, null=True, blank=True)
+    work_id = models.CharField(max_length=30, default='No work ID')
+    hospital_name = models.CharField(max_length = 54,default='Health-e-net attendant')
 
     def __str__(self):
         return self.first_name
