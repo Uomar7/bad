@@ -1,59 +1,55 @@
+<!-- ! navbar -->
 
-    
-    <div style="font-size: 30px;font-family: 'Slabo 27px', serif;">  
-        <nav  style="background: red " >
-            <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white;"><span style="color:black; font-size: 35px;">F</span>orm   <span style="color:black ;font-size: 30px"> S</span>canner</a>
-            <a class="navbar-brand" href="{% url 'scan' %}" style="color:white;">Scan</a>
-            <a class="navbar-brand" href="{% url 'profile' %}" style="color:white;"> Profile</a>
-           
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon" style="color:white ">Account</span>
-            
-          <div style="float: right;">
-            <div class="collapse navbar-collapse " id="navbarSupportedContent" >
-              <ul class="navbar-nav mr-auto navbar-right">
-                
-                
-                <li class="nav-item dropdown" style="float:right;">
-                        {% if user.is_authenticated %}
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>o</span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
-                    <a class="dropdown-item" href="/accounts/password/change">Change password</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-                    
-                </li>
-                
-              </ul>
-              {% endif %}
-    
-            </div>
-          </button> -->
-          <div class="navbar-toggler" style="float:right;">
-            <a class="btn btn-link-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-circle"></i>
-            </a>
-          
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'new-profile' %}">Edit profile</a>
-              <a class="dropdown-item" href="/accounts/password/change">Change password</a>
-              <a class="dropdown-item" href="/logout">Logout</a>
-            </div>
-          </div>
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">Form Scanner</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'scan' %}">Scan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Dropdown
+        </a>
+        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-          </nav>
-          </div>
-    
-    <style>
-    .navbar-brand{
-        color:white;
-        transition:0.7s
-    }
-    .navbar-brand:hover{
-        color:rgb(105, 1, 1);
-    
-        font-size:20px
-    }
-    </style>
+      </li> -->
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <!-- <li class="nav-item">
+        <a class="nav-link waves-effect waves-light">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+      </li> -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="{% url 'new-profile' %}">Edit Profile</a>
+          <a class="dropdown-item" href="/accounts/password/change">Change password</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--/.Navbar -->
