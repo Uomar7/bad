@@ -9,7 +9,7 @@
 .boot {
     background: black;
     color: whitesmoke;
-    transform: translateX(8vw);
+    transform: translateX(2vw);
 }
 
 .boot:hover {
@@ -27,4 +27,8 @@
 
 #modalContactForm {
     margin: 10px;
+}
+
+.heady {
+    text-align: center;
 }

@@ -21,7 +21,9 @@
                 </div>
                 <ul>
                     {% for form in forms %}
-                    <li class="card-text">{{form.sickness_form}} <a href="" class="boot btn btn-sm">view</a></li>
+                    <li class="card-text">{{form.sickness_form}} <a id="{{form.id}}-tab" data-toggle="tab"
+                            href="#{{form.id}}" role="tab" aria-controls="{{form.id}}" aria-selected="true"
+                            class="boot btn btn-sm">view</a></li>
                     {% empty %}
                     <p class="card-text">No forms yet</p>
                     {% endfor %}
@@ -34,7 +36,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-heading">Form image</h4>
+                    <h4 class="card-heading heady">Form image</h4>
+                </div>
+                <div class="card-body tab-content" id="myTabContent">
+                    {% for form in forms %}
+                    <div class="pic tab-pane fade show active" id="{{ form.id }}" role="tabpanel" aria-labelledby="{{ form.id }}-tab">
+                        <img src="{{form.image.url}}" class="img-fluid" alt="">
+                    </div>
+                    {% empty %}
+                    <p class="card-text">No forms yet</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -42,12 +53,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class=" modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="card">
-                <h4 class="card-header">Add Form</4>
+                <h4 class="card-header heady">Add Form</4>
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             {%csrf_token%}
