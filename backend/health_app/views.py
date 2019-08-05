@@ -1,13 +1,74 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from rest_framework import status
-from .models import Profile, Extracted_data, Original_image 
-from django.contrib.auth.models import User
-
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
+from .forms import NewProfileForm,NewOriginalForm,Extracted_data
+from .models import Profile, Extracted_data, Original_image 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,Http404
+from rest_framework.response import Response
+from django.contrib.auth.models import User
 from .permissions import IsAdminOrReadOnly
+from rest_framework.views import APIView
+from django.http import JsonResponse
+from django.db import transaction
+from rest_framework import status
+
+
+# @login_required(login_url='/accounts/login/')
+def welcome(request):
+    
+    return render(request,'index.html')
+
+@login_required(login_url='/accounts/login/')  
+@transaction.atomic    
+def new_profile(request):
+    user = request.user
+    current_user = Profile.objects.get(user=user)
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES,instance=current_user)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = user
+            profile.save()
+        return redirect('profile')
+    else:
+        form = NewProfileForm()
+    return render(request, 'new-profile.html', {"form":form,"user":user})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    
+    return render(request, 'profile-page.html',{"profile":profile})
+    
+# ! view function to view different forms and add a form or scan a form.
+def scan(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    forms = Original_image.objects.all()
+    print(forms)
+    if request.method == 'POST':
+        form = NewOriginalForm(request.POST,request.FILES)
+        if form.is_valid():
+            if Original_image.objects.filter(sickness_form__icontains = form.cleaned_data['sickness_form']):
+                error='Form already exists'           
+            else:
+                new = form.save(commit=False)
+                new.posted_by = profile
+                new.save()
+
+                return redirect('scan')
+    else:
+        form = NewOriginalForm()
+    return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms})
+
+def delete_item(request,image_id):
+    # current_user = request.user
+    # item = Original_image.objects.get(id =image_id)
+    if request.user:
+        Original_image.objects.get(id =image_id).delete()
+    
+    return redirect('scan')
 
 # * serializing the Django User model
 class UserList(APIView):
@@ -100,6 +161,7 @@ class ProfileDescr(APIView):
             serializers.save()
             return Response(serializers.data)
         else:
+            
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, format=None):
@@ -168,3 +230,5 @@ class ExtractDescr(APIView):
         extract =self.get_extract(pk)
         extract.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
+
+
