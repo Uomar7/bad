@@ -29,7 +29,7 @@
                     {% endfor %}
                 </ul>
                 <hr>
-                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Add form</a>
+                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Scan form</a>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                     {% for form in forms %}
                     <div class="pic tab-pane fade show active" id="{{ form.id }}" role="tabpanel" aria-labelledby="{{ form.id }}-tab">
                         <img src="{{form.image.url}}" class="img-fluid" alt="">
-                        <a href="{% url 'delete' form.id %}" class="btn btn-sm"> Delete </a>
+                        <a href="{% url 'delete' form.id %}" style="color: red;" class="btn btn-sm"> Delete </a>
                     </div>
                     {% empty %}
                     <p class="card-text">No forms yet</p>
