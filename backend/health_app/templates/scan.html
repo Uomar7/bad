@@ -28,6 +28,9 @@
                     <p class="card-text">No forms yet</p>
                     {% endfor %}
                 </ul>
+                {% for pt in pts %}
+                <p>{{pt}}</p>
+                {% endfor %}
                 <hr>
                 <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Add form</a>
             </div>
