@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib.auth import views
+
 urlpatterns = [
+    url(r'^api-token-auth/', obtain_auth_token),
     url(r'^admin/', admin.site.urls),
     url(r'',include('health_app.urls')),
     url(r'^accounts/',include('registration.backends.simple.urls')),
-    url(r'^logout/$', views.logout, {"next_page": '/'}), 
-
-    
+    url(r'^logout/$', views.logout, {"next_page": '/'}),  
 ]

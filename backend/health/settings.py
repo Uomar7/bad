@@ -51,7 +51,7 @@ SECRET_KEY = 'x4(ozv=yagz+jw&l-t)zrc17=xr!4s(pc*-nzicxx2*lv58rhh'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# AUTH_USER_MODEL='core.User'
 
 # Application definition
 
@@ -65,7 +65,6 @@ INSTALLED_APPS = [
     'health_app',
     'bootstrap4',
     'rest_framework',
-    
 
 ]
 
@@ -150,6 +149,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 
 # Static files (CSS, JavaScript, Images)

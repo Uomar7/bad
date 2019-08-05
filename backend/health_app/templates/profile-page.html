@@ -1,45 +1,75 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load staticfiles %}
 {%load static%}
+
+{% block styles %}
+<link rel="stylesheet" href="../../static/css/profile.css">
+{% endblock%}
 {% block content %}
-{{block.super}}
+
 <br><br><br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-          <div class="modal fade" id="imageModal{{profile.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-        <img src="{{profile.pic.url}}" alt="" width="150px" height="150px" class="ro" data-toggle="modal">
-      </div>
-      <div class="col-md-6 col-sm-12">
-      <div class="">
-        <div class="">
-          
-          <b><p style="font-family: 'Metal Mania', cursive;">{{user.username}}</p></b>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <div class="card">
+        <img src="{{profile.pic.url}}" alt="" width="240px" class="img-fluid card-img-top">
+        <div class="card-body">
+          {% if profile.position == 'Doctor' %}
+          <h4>Dr. {{profile.last_name}}</h4>
+          {% else %}
+          <h3>{{ user.username }}</h3>
+          {% endif %}
+
+          <p>Position: {{profile.position}}</p>
+          <p>Hospital: {{profile.hospital_name}}</p>
+          <p>Work ID: {{profile.work_id}}</p>
         </div>
-        <div class="button">
-          <a href="{%url 'new-profile' user.id%}" style="border:1px solid lightgrey;border-radius:2px;color:black;text-decoration:none">Edit</a></span>
-        </div>
-        <div class="cog" style="font-family: 'Metal Mania', cursive;">
-          
-          
-        </div>
-      </div><br><br>
-      <h2 style="font-family: 'Metal Mania', cursive;">Bio</h2>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.position}}</p>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.hospital_name}}</p>
-    <p style="font-family: 'Metal Mania', cursive;">{{profile.bio}}</p>
-    
-    
-    
-    
       </div>
     </div>
-    <br><hr>
+    <br>
+    <div class="col-md-2"></div>
+    <div class="col-md-6 col-sm-12">
+      <div class="row">
+
+        <div class="card">
+          <h5 class="card-header">About</h5>
+          <div class="card-body">
+            <p class="card-text">{{profile.bio}}</p>
+          </div>
+
+          <a href="" data-toggle="modal" data-target="#modalLoginForm" class="btn btn-sm">Edit profile</a>
+        </div>
+
+
+      </div>
+    </div>
+    <br>
+    <hr>
     <div class="row">
-      
+
     </div>
   </div>
 
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Profile</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form layout='inline' %}
 
-{% endblock %}
+            <input type="submit" class="btn btn-sm" value="Update">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

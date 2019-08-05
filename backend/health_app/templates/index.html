@@ -1,197 +1,158 @@
 {%extends 'base.html'%}
 {% load bootstrap4 %}
-{% block content %}
 {% load staticfiles %}
 {% load static %}
-{{block.super}}
-<div class=""> <div class="overlay"><div class = "hover"><span style="color:tomato;">F</span><span style="color:black;">orm</span>   <span style="color:tomato">S</span><span style="color:black;">canner</span></div>
+{% block styles%}
+<link rel="stylesheet" href="../../static/css/index.css">
+{% endblock%}
 
-    <style>
-        /* .footer {
-          position: fixed;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          background-color:#ff4444;
-          color: white;
-          text-align: center;
-        } */
-        .container-fluid{
-     background-image: url('');
-     height: 600px;
-     width: auto;
-     background-repeat: no-repeat;
-     background-position: cover;
-     background-size: 90%;
-    }
-    .overlay{
-        
-  bottom: 0; 
-  background: rgb(245, 243, 243);
-  background: rgb(245, 243, 243); /* Black see-through */
-  color: #f1f1f1;
-  width: 100%;
-  height:30%;
-  transform: translateY(0vh);
-  transition: .5s ease;
-  opacity:0;
-  color: white;
-  font-size: 100px;
-  padding: 20px;
-  text-align: center;
-  transition: 0.2;
-  font-family: 'Fredericka the Great', cursive;
+{% block content %}
 
-}
- .overlay {
-  opacity: 1;
-  width: 100%;
-}
-.overlay:hover{
-   font-size:150px;
+<section class="head">
+  <h1>Form Scanner</h1>
+</section>
 
-}
-
-    
-        </style>
-        
-        
-  </div>
-  <section class="text-left py-5" style="background-color:rgb(245, 243, 243);color: antiquewhite;">
-    
-  </section>
-  <section class="text-center py-5" style="background-color: tomato ; height: 70%;" id="column-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
+<section class="text-center py-5" id="column-section">
+  <div class="container-fluid advert">
+    <div class="row">
+      <div class="col-sm-4">
         <h4>Simple</h4>
         <p>Form scanner is easy to use and makes the user experience hassle free</p>
         <p></p>
-        </div>
-        <div class="col-sm-4">
-          <h4>Quality</h4>
-          <p>Automated form processing ensures that information remains of high quality.</p>
-        </div>
-        <div class="col-sm-4">
-          <h4>Convinient</h4>
-          <p>Form scanner, captures information from the defined template forms. Just put your forms into Form Scanner and let our data capture software do the rest for you.</p>
-        </div>
       </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-     
-    <div class="card card-cascade wider">
-
-        <!-- Card image -->
-        <div class="view view-cascade overlay">
-          <img  class="card-img-top" src="https://images.pexels.com/photos/1893486/pexels-photo-1893486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <!-- Card content -->
-        <div class="card-body card-body-cascade text-center">
-      
-          <!-- Title -->
-          <h4 class="card-title"><strong>Simple</strong></h4>
-          <!-- Subtitle -->
-          <h5 class=" font-weight-bold -text py-2"><strong>Scan</strong></h5>
-          <!-- Text -->
-          <p class="card-text">Form scanner is easy to use and makes the user experience hassle free. </p>
-      
-          <!-- Linkedin -->
-          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-          <!-- Twitter -->
-          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-          <!-- Dribbble -->
-          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-      
-        </div>
-      
+      <div class="col-sm-4">
+        <h4>Convinient</h4>
+        <p>Form scanner, captures information from the defined template forms. Just put your forms into Form Scanner and
+          let our data capture software do the rest for you.</p>
       </div>
-      </div>
-    
-      <!-- Card Wider -->
-      
-      <!-- Card Narrower -->
-      
-      
-          <div class="col-md-4">
-      <div class="card card-cascade wider">
-      
-        <!-- Card image -->
-        <div class="view view-cascade overlay">
-          <img  class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/04/20/24/ecg-1953179_960_720.jpg" alt="Card image cap">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <!-- Card content -->
-        <div class="card-body card-body-cascade">
-      
-          <!-- Label -->
-          <h5 class=" font-weight-bold card-title"> Convinient</h5>
-          <!-- Title -->
-          <h4 class="font-weight-bold -text py-2">Fast</h4>
-          <!-- Text -->
-          <p class="card-text">Automated form processing ensures that information remains of high quality.</p>
-          <!-- Button -->
-          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-          <!-- Twitter -->
-          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-          <!-- Dribbble -->
-          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-      
-      
-        </div>
-      
-      </div>
-          </div>
-      <!-- Card Narrower -->
-      <div class="col-md-4">
-      <!-- Card Regular -->
-      <div class="card card-cascade">
-      
-        <!-- Card image -->
-        <div class="view view-cascade overlay">
-          <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/03/13/09/56/checklist-3222079_960_720.jpg" alt="Card image cap">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <!-- Card content -->
-        <div class="card-body card-body-cascade text-center">
-      
-          <!-- Title -->
-          <h4 class="  font-weight-bold card-title"><strong>Quality</strong></h4>
-          <!-- Subtitle -->
-          <h6 class="font-weight-bold -text py-2">Instant</h6>
-          <!-- Text -->
-          <p class="card-text">Form scanner, captures information from the defined template forms. Just put your forms into Form Scanner and let our data capture software do the rest for you.
-          </p>
-      
-          <!-- Facebook -->
-          <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-          <!-- Twitter -->
-          <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-          <!-- Dribbble -->
-          <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-      
-        </div>
-      
-      </div>
-      <!-- Card Regular -->
+      <div class="col-sm-4">
+        <h4>Quality</h4>
+        <p>Automated form processing ensures that information remains of high quality.</p>
       </div>
     </div>
   </div>
-  </section>
-  
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+
+        <div class="card card-cascade wider">
+
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+            <img class="card-img-top"
+              src="https://images.pexels.com/photos/1893486/pexels-photo-1893486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center">
+
+            <!-- Title -->
+            <h4 class="card-title"><strong>Simple</strong></h4>
+            <!-- Subtitle -->
+            <h6 class=" font-weight-bold -text py-2"><strong>Scan</strong></h6>
+            <!-- Text -->
+            <p style="color: whitesmoke;" class="card-text">Form scanner is easy to use and makes the user experience hassle free. </p>
+
+            <!-- Linkedin -->
+            <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Twitter -->
+            <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+            <!-- Dribbble -->
+            <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Card Wider -->
+
+      <!-- Card Narrower -->
+
+
+      <div class="col-md-4">
+        <div class="card card-cascade wider">
+
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/04/20/24/ecg-1953179_960_720.jpg"
+              alt="Card image cap">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body card-body-cascade">
+
+            <!-- Label -->
+            <h4 class=" font-weight-bold card-title"> <strong>Convinient</strong></h4>
+            <!-- Title -->
+            <h6 class="font-weight-bold -text py-2"><strong>Fast</strong></h6>
+            <!-- Text -->
+            <p style="color: whitesmoke;" class="card-text">Automated form processing ensures that information remains of high quality.</p>
+            <!-- Button -->
+            <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Twitter -->
+            <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+            <!-- Dribbble -->
+            <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+
+          </div>
+
+        </div>
+      </div>
+      <!-- Card Narrower -->
+      <div class="col-md-4">
+        <!-- Card Regular -->
+        <div class="card card-cascade">
+
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/03/13/09/56/checklist-3222079_960_720.jpg"
+              alt="Card image cap">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center">
+
+            <!-- Title -->
+            <h4 class="  font-weight-bold card-title"><strong>Quality</strong></h4>
+            <!-- Subtitle -->
+            <h6 class="font-weight-bold -text py-2"><strong>Instant</strong></h6>
+            <!-- Text -->
+            <p style="color: whitesmoke;" class="card-text">Form scanner, captures information from the defined template forms. Just put your forms
+              into Form Scanner and let our data capture software do the rest for you.
+            </p>
+
+            <!-- Facebook -->
+            <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Twitter -->
+            <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+            <!-- Dribbble -->
+            <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+          </div>
+
+        </div>
+        <!-- Card Regular -->
+      </div>
     </div>
-    </div>
+  </div>
+  </div>
+</section>
+
 </div>
-  
+</div>
+</div>
+
 {% endblock %}

@@ -1,0 +1,43 @@
+* {
+    font-family: 'Nunito', sans-serif; 
+}
+
+.head {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background: whitesmoke;
+    background-position: center center;
+}
+
+.head h1 {
+    font-weight: 900;
+    font-size: 7em;
+    color: rgba(0, 0, 0);
+}
+
+.head h1:hover {
+    transition: .5s;
+    color: red;
+}
+
+#column-section {
+    height: 70%;
+}
+
+.card {
+    background: red;
+    color: whitesmoke;
+}
+
+.advert h4 {
+    color: red;
+    font-weight: bold;
+}
+
+.advert p {
+    color: black; 
+}
