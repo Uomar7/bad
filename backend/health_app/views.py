@@ -18,6 +18,7 @@ def welcome(request):
     
     return render(request,'index.html')
 
+#* ---------------------------EDIT PROFILE------------------------------ 
 @login_required(login_url='/accounts/login/')  
 @transaction.atomic    
 def new_profile(request):
@@ -31,16 +32,18 @@ def new_profile(request):
             profile.save()
         return redirect('profile')
     else:
-        form = NewProfileForm()
+        form = NewProfileForm(instance=current_user)
     return render(request, 'new-profile.html', {"form":form,"user":user})
 
+#* ----------------------------PROFILE---------------------------------- 
 @login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     
     return render(request, 'profile-page.html',{"profile":profile})
-    
+
+# * --------------------------ADD & SCAN fORMS--------------------------  
 # ! view function to view different forms and add a form or scan a form.
 def scan(request):
     current_user = request.user
@@ -70,6 +73,9 @@ def delete_item(request,image_id):
     
     return redirect('scan')
 
+
+
+# ! ------------------------END VIEWS---------------------------------
 # * serializing the Django User model
 class UserList(APIView):
     permission_classes = (IsAdminOrReadOnly,)

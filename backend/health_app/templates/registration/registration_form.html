@@ -15,7 +15,13 @@
       <div class="col-md-6 mt-8">
         <form  action="/accounts/register/" method="post" style="border: 2px solid lightgrey; padding:7%; background-color:white;">
           <h4 style="font-family:'Lobster Two', sans-serif;" class="text-center">Form Scanner</h4>
-          {% csrf_token %}
+          {% csrf_token %}">Sign Up</a></p>
+        </div>
+
+
+
+        <input type="hidden" name="next" value="{{next}}">
+
           {% bootstrap_form form layout='inline'%}
           <div class="form-group">
             <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">

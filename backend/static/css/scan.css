@@ -1,3 +1,30 @@
 * {
     font-family: 'Nunito', sans-serif;
 }
+
+.start {
+    margin-top: 4em;
+}
+
+.boot {
+    background: black;
+    color: whitesmoke;
+    transform: translateX(8vw);
+}
+
+.boot:hover {
+    color: red;
+    background: whitesmoke;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.boot2:hover {
+    font-weight: 900;
+    background: red;
+    letter-spacing: 2px;
+}
+
+#modalContactForm {
+    margin: 10px;
+}
