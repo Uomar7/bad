@@ -45,7 +45,7 @@ def profile(request):
         form = NewProfileForm(request.POST, request.FILES,instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user = user
+            profile.user = request.user
             profile.save()
         return redirect('profile')
     else:
