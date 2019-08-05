@@ -40,10 +40,19 @@ def new_profile(request):
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
-    
-    return render(request, 'profile-page.html',{"profile":profile})
 
-# * --------------------------ADD & SCAN fORMS--------------------------  
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES,instance=profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = user
+            profile.save()
+        return redirect('profile')
+    else:
+        form = NewProfileForm(instance=profile)
+   
+    return render(request, 'profile-page.html',{"profile":profile, "form":form})
+    
 # ! view function to view different forms and add a form or scan a form.
 def scan(request):
     current_user = request.user
