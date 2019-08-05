@@ -60,7 +60,7 @@ warped = cv2.GaussianBlur(warped, (5, 5), 0)
  # Setup SimpleBlobDetector parameters.
 params = cv2.SimpleBlobDetector_Params()
  
-# # Change thresholds
+# Change thresholds
 # params.minThreshold = 10
 # params.maxThreshold = 200
  
