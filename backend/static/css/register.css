@@ -1,0 +1,7 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+.head {
+    transform: translateY(50%);
+}
