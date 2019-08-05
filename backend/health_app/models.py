@@ -30,8 +30,8 @@ class Profile(models.Model):
         return self.first_name
 
 class Original_image(models.Model):
-    image = models.ImageField(upload_to = 'forms/')
     sickness_form = models.CharField(max_length = 82)
+    image = models.ImageField(upload_to = 'forms/')
     posted_by = models.ForeignKey(Profile, related_name='forms')
 
     def __str__(self):

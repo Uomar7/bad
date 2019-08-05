@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %}
 {% load staticfiles %}
 {%load static%}
 
@@ -10,14 +11,12 @@
 <br><br><br>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <img src="{{profile.pic.url}}" alt="" width="240px" class="rounded-circle ">
-    </div>
-    <div class="col-md-6 col-sm-12">
-      <div class="row">
-        <div class="col-md-5">
+    <div class="col-md-4 col-sm-12">
+      <div class="card">
+        <img src="{{profile.pic.url}}" alt="" width="240px" class="img-fluid card-img-top">
+        <div class="card-body">
           {% if profile.position == 'Doctor' %}
-          <h3>Dr. {{profile.last_name}}</h3>
+          <h4>Dr. {{profile.last_name}}</h4>
           {% else %}
           <h3>{{ user.username }}</h3>
           {% endif %}
@@ -25,16 +24,21 @@
           <p>Position: {{profile.position}}</p>
           <p>Hospital: {{profile.hospital_name}}</p>
           <p>Work ID: {{profile.work_id}}</p>
-          <a href=" {%url 'new-profile' %}" class="btn btn-sm">Edit profile</a>
-
         </div>
-        <div class="col-md-7">
-          <div class="card">
-            <h5 class="card-header">About</h5>
-            <div class="card-body">
-              <p class="card-text">{{profile.bio}}</p>
-            </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-md-2"></div>
+    <div class="col-md-6 col-sm-12">
+      <div class="row">
+
+        <div class="card">
+          <h5 class="card-header">About</h5>
+          <div class="card-body">
+            <p class="card-text">{{profile.bio}}</p>
           </div>
+
+          <a href="" data-toggle="modal" data-target="#modalLoginForm" class="btn btn-sm">Edit profile</a>
         </div>
 
 
@@ -47,5 +51,25 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Profile</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form layout='inline' %}
 
-  {% endblock %}
+            <input type="submit" class="btn btn-sm" value="Update">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

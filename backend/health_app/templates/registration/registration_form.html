@@ -13,9 +13,16 @@
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEUDAQT///8AAADIyMn6+vr39/eHh4d9fX7f39/x8fHc3Nz09PTu7u7n5+fPz8+xsbFIR0jV1dXAwMAtLC24uLiXl5ednZ1nZmdtbG04ODkKCQt2dXbOzs6pqaloZ2hcXFxPTk88OzwZGBmBgYFfX18iISJOTk6YmJgfHh+Qj5AxMTKrq6spKCpWVldBQUIhICELfF2dAAALUElEQVR4nO2d6XrqOgxFgxjLPBUow6GltD1MPe//djcDQ4i3bAeS2OGy/7UEf17EsWVZUpyCSi/zTmXSHaymjk2argbdSaUzf1H235F+WupXB3SUaaaITt0aVPulmwk7SxvRruX3cDm8hbBZsR3uLA+y0oxJ2Jrkhs+X29tZKwZh6TNXeL68+wgfSEQ4zNf9O8ntdV+LsNHNJZ8nokNZTVjMLZ8nop6K8CfXgB7iQk44yzefJ/qUER7yD+giTnjC90cAdBHHHOHyMQAjdzFE+ADP4ElUQYSbxwF0ERciYVECSLZK0uV6lPCFvdxraV3Z9Yt2qb+rrCWQNC1FCLvMpURfr+efwzrVX784xvOEeiTs4OvczaVgBVmm9oFhpGJwQUBYhlcRvdt7+y7qfePeT4OPA8IqBuwY7HccLTDiq/+hT9hCV9Cb2o9li5oDBEAN7zOfcII+X5vtdEwhizpY9z3CFvp0omjSNgGTk8jbD3uE4Cm8Nl5tUaks6PIhuIv+k+gSlsSnkN6MUbDqVbfAqlkddqcLvkSMVcEnFNdCIusmmcaBt92O/mAwX9LcJxRvL8l8yEbUnPI2KNEouGghgsw8wob4/4NZHKC9dONz8iK+Ra8i8giHIiHjPTYnxc6" width="100%"  alt="masimu"><br> <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE3mRq-Cifr8WeCxFrbE7kMWNCATGWky1Goku4UYIcWgRE3gOxpg" alt="playstore" width="41%"></a>   <a href="#"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Get_it_on_Google_play.svg/1200px-Get_it_on_Google_play.svg.png" alt="google" width="48%"></a>
       </div> -->
       <div class="col-md-6 mt-8">
+        
         <form  action="/accounts/register/" method="post" style="border: 2px solid lightgrey; padding:7%; background-color:white;">
           <h4 style="font-family:'Lobster Two', sans-serif;" class="text-center">Form Scanner</h4>
-          {% csrf_token %}
+          {% csrf_token %}"Sign Up</a></p>
+        </div>
+
+
+
+        <input type="hidden" name="next" value="{{next}}">
+
           {% bootstrap_form form layout='inline'%}
           <div class="form-group">
             <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">

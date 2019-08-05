@@ -1,6 +1,6 @@
 nav {
-    position: static;
     background: red;
+    margin-bottom: 1em;
 }
 
 .navbar-brand {
@@ -23,4 +23,8 @@ nav {
     transition: .2s;
     transform: scale(1.05,1.05);
     font-weight: bold;
+}
+
+.dropdown {
+    color: whitesmoke;
 }
