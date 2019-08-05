@@ -6,11 +6,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <img src="{{profile.pic.url}}" alt="" width="150px" height="150px" class="rounded-circle">
+          <div class="modal fade" id="imageModal{{profile.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+        <img src="{{profile.pic.url}}" alt="" width="150px" height="150px" class="ro" data-toggle="modal">
       </div>
       <div class="col-md-6 col-sm-12">
       <div class="">
         <div class="">
+          
           <b><p style="font-family: 'Metal Mania', cursive;">{{user.username}}</p></b>
         </div>
         <div class="button">
