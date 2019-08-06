@@ -29,7 +29,8 @@
                     {% endfor %}
                 </ul>
                 <hr>
-                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Scan form</a>
+                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Upload form</a>
+                <a href="" data-toggle="modal" data-target="#modalContact" class="boot2 btn btn-sm">Scan form</a>
             </div>
         </div>
 
@@ -73,6 +74,24 @@
     </div>
 </div>
 
+<div class=" modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <h4 class="card-header heady">Scan Form</4>
+                    <div class="card-body">
+                        <form action="{% url 'scan' %}" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+
+                            {% bootstrap_form scanform layout='inline' %}
+                            <input type="submit" class="btn btn-success btn-sm" value="Scan Form">
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- <div class="container-fluid">
     <div class="card start">

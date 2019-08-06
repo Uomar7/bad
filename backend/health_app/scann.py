@@ -86,3 +86,11 @@ def extract(image):
                     ind += 1
     print(values)
     return values
+
+#* @login_required(login_url='/accounts/login/')
+#* def scann(request):
+#*     if request.method == 'POST':
+#*         Scanform = ScannForm(request.POST,request.FILES)
+#*         if form.is_valid():
+#*             im = Scanform.cleaned_data['image']
+#*             answers = extract(im)

@@ -10,7 +10,7 @@ from .permissions import IsAdminOrReadOnly
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from django.db import transaction
-from rest_framework import 
+# from rest_framework import 
 from .scann import extract
 
 
@@ -57,10 +57,13 @@ def profile(request):
 # ! view function to view different forms and add a form or scan a form.
 @login_required(login_url='/accounts/login/')
 def scan(request):
+
+#*--------------------------UPLOAD NEW FORM--------------------------- 
+
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     forms = Original_image.objects.all()
-    print(forms)
+    
     if request.method == 'POST':
         form = NewOriginalForm(request.POST,request.FILES)
         if form.is_valid():
@@ -74,17 +77,23 @@ def scan(request):
                 return redirect('scan')
     else:
         form = NewOriginalForm()
-    return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms})
 
-@login_required(login_url='/accounts/login/')
-def scann(request):
+#! -----------------------------SCAN FORM--------------------------------
+    
+    answers = []
     if request.method == 'POST':
-        Scanform = ScannForm(request.POST,request.FILES)
+        scanform = ScannForm(request.POST,request.FILES)
         if form.is_valid():
-            im = Scanform.cleaned_data['image']
-            answers = extract(im)
-        
+            print('------------------------------------------------')
+            ima = scanform.cleaned_data['image']
+            vals = extract(ima)
+            answers.extend(vals)
+            print(vals)
+    
+    else:
+        scanform = ScannForm()
 
+    return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms, 'answers':answers, 'scanform':scanform})    
 
 def delete_item(request,image_id):
     # current_user = request.user
