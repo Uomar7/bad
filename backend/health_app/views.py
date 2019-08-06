@@ -66,14 +66,22 @@ def scan(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     forms = Original_image.objects.all()
-    im=forms[2]
-    image = im.image.url
-    image= image[1:]
-    # s=str(image)
-    print("no")
-    # print(image[1:])
-    pts = blobScan(image)
-    print(pts)
+    print(len(forms))
+    if len(forms)>1:
+        
+        im=forms[1]
+        image = im.image.url
+        print(image)
+        image= image[1:]
+        print(image)
+        # s=str(image)
+        print("no")
+        # print(image[1:])
+        pts = blobScan(image)
+        print(pts)
+    else:
+        pts=['0','0']
+
     # di=[]
     # for k, v in dict.items():
     #     for i in range(len(pts)):
