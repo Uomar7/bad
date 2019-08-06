@@ -1,5 +1,5 @@
 from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
-from .forms import NewProfileForm,NewOriginalForm,Extracted_data
+from .forms import NewProfileForm,NewOriginalForm,ExtractedForm, ScannForm
 from .models import Profile, Extracted_data, Original_image 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
@@ -10,7 +10,8 @@ from .permissions import IsAdminOrReadOnly
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from django.db import transaction
-from rest_framework import status
+from rest_framework import 
+from .scann import extract
 
 
 # @login_required(login_url='/accounts/login/')
@@ -74,6 +75,16 @@ def scan(request):
     else:
         form = NewOriginalForm()
     return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms})
+
+@login_required(login_url='/accounts/login/')
+def scann(request):
+    if request.method == 'POST':
+        Scanform = ScannForm(request.POST,request.FILES)
+        if form.is_valid():
+            im = Scanform.cleaned_data['image']
+            answers = extract(im)
+        
+
 
 def delete_item(request,image_id):
     # current_user = request.user

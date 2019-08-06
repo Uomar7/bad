@@ -11,7 +11,10 @@ class NewOriginalForm(forms.ModelForm):
         model = Original_image
         exclude = ['posted_by']
 
-class Extracted_data(forms.ModelForm):
+class ScannForm(form.Form):
+    image = forms.ImageField(upload_to = 'scan/')
+
+class ExtractedForm(forms.ModelForm):
     class Meta:
         model = Extracted_data
         exclude = ['original','posted_by']
