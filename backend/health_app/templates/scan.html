@@ -28,12 +28,13 @@
                     <p class="card-text">No forms yet</p>
                     {% endfor %}
                 </ul>
+                
                 <hr>
                 <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Scan form</a>
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-heading heady">Form image</h4>
@@ -42,7 +43,11 @@
                     {% for form in forms %}
                     <div class="pic tab-pane fade show active" id="{{ form.id }}" role="tabpanel" aria-labelledby="{{ form.id }}-tab">
                         <img src="{{form.image.url}}" class="img-fluid" alt="">
+<<<<<<< HEAD
                         <a href="{% url 'delete' form.id %}" style="color: red;" class="btn btn-sm"> Delete </a>
+=======
+                        <a href="{% url 'delete' form.id %}" style="color:red"class="btn btn-sm">delete</a>
+>>>>>>> 006317ab5d11082210d6f62e8103f5156bd7bfca
                     </div>
                     {% empty %}
                     <p class="card-text">No forms yet</p>
@@ -50,6 +55,20 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-heading heady">details</h4>
+                    </div>
+                    <div class="card-body tab-content" id="myTabContent">
+                            {% for pt in pts %}
+                            <p>{{pt}}</p>
+                            {% empty %}
+                        <p class="card-text">No forms yet</p>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
 
     </div>
 </div>
@@ -72,7 +91,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- <div class="container-fluid">
     <div class="card start">
