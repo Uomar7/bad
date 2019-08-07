@@ -77,20 +77,9 @@ def extract(image):
     for k,v in dict.items():
         for i in range(len(pts)):
             for j in range(len(pts[0])):
-                ind = 0
+                
                 if int(float(pts[i][j])) == int(float(k)):
                     str = str(pts[i][j])
                     values.append(dict.get(st))
-                    ind += 1
-                else:
-                    ind += 1
-    print(values)
-    return values
 
-#* @login_required(login_url='/accounts/login/')
-#* def scann(request):
-#*     if request.method == 'POST':
-#*         Scanform = ScannForm(request.POST,request.FILES)
-#*         if form.is_valid():
-#*             im = Scanform.cleaned_data['image']
-#*             answers = extract(im)
+    return values

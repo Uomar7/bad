@@ -86,7 +86,8 @@ def scan(request):
         if form.is_valid():
             print('------------------------------------------------')
             ima = scanform.cleaned_data['image']
-            vals = extract(ima)
+            imag = ima[1:]
+            vals = extract(imag)
             answers.extend(vals)
             print(vals)
     
