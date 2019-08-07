@@ -81,51 +81,15 @@ def scan(request):
     else:
         pts=['0','0']
 
-    # di=[]
-    # for k, v in dict.items():
-    #     for i in range(len(pts)):
-    #         for j in range(len(pts[0])):
-    #             ind = 0
-    #             if int(float(pts[i][j])) == int(float(k)):
-    #                 st = str(pts[i][j])
-    #                 di.append(dict.get(st))
-    #             else:
-    #                 ind += 1
-
-    # for k,v in dict.items():
-    # 	for i in range(len(pts)):
-    # 		for j in range(len(pts[0])):
-    # 			ind=0
-    # 			if int(float(pts[i][j]))==int(float(k)):
-    # 				st = str(pts[i][j])
-    # 				print(dict.get(st))
-    # 				ind += 1
-    # 			else :
-    # 				ind+=1
-
     if request.method == 'POST':
         form = NewOriginalForm(request.POST, request.FILES)
         if form.is_valid():
-            # image = form.cleaned_data['image']
-            # pts = blobScan(image)
-            # di=[]
-            # for k, v in dict.items():
-            #     for i in range(len(pts)):
-            #         for j in range(len(pts[0])):
-            #             ind = 0
-            #             if int(float(pts[i][j])) == int(float(k)):
-            #                 st = str(pts[i][j])
-            #                 ren = di.append(dict.get(st))
-            #             else:
-            #                 ind += 1
-            if Original_image.objects.filter(sickness_form__icontains=form.cleaned_data['sickness_form']):
-                error = 'Form already exists'
-            else:
-                new = form.save(commit=False)
-                new.posted_by = profile
-                new.save()
 
-                return redirect('scan')
+            new = form.save(commit=False)
+            new.posted_by = profile
+            new.save()
+
+            return redirect('scan')
     else:
         form = NewOriginalForm()
     return render(request, 'scan.html', {'profile': profile, 'form': form, 'forms': forms, 'pts':pts})
