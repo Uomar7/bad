@@ -56,8 +56,8 @@ def profile(request):
 
     return render(request, 'profile-page.html', {"profile": profile, "form": form})
 
+#! ------------------------------ SCAN PAGE --------------------------------------
 # ! view function to view different forms and add a form or scan a form.
-
 @login_required(login_url='/accounts/login/')
 def scan(request):
     
@@ -66,16 +66,15 @@ def scan(request):
     forms = Original_image.objects.all()
     print(len(forms))
     if len(forms)>=1:
-        
-        im=forms[0]
-        image = im.image.url
-        # print(image)
-        image= image[1:]
-        # print(image)
-        # s=str(image)
-        print("no")
-        # print(image[1:])
-        pts = blobScan(image)
+        for frm in forms:        
+            image = frm.image.url
+            # print(image)
+            image= image[1:]
+            # print(image)
+            # s=str(image)
+            print("no")
+            # print(image[1:])
+            pts = blobScan(image)
         pts = list(dict.fromkeys(pts))
         print(pts)
     else:
@@ -87,10 +86,10 @@ def scan(request):
 
             new = form.save(commit=False)
             new.posted_by = profile
-            new.gender = pts[0]
-            new.visit = pts[1]
-            new.age = pts[2]
-            new.hiv = pts[3]
+            # new.gender = pts[0]
+            # new.visit = pts[1]
+            # new.age = pts[2]
+            # new.hiv = pts[3]
             new.save()
 
             return redirect('scan')

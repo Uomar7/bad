@@ -105,24 +105,6 @@ def blobScan(image):
 	# Draw detected blobs as red circles.
 	# cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
 	im_with_keypoints = cv2.drawKeypoints(warped, keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-	
-	# # Show keypoints
-	# for keyPoint in keypoints:
-	#     x = keyPoint.pt[0]
-	#     y = keyPoint.pt[1]
-	#     s = keyPoint.size
-	# key_arr=[]
-	# for i in keypoints[0].pt:
-	# 	# x=keypoints[i].pt[0]
-	# 	# y=keypoints[i].pt[1]
-
-	# 	print (i)
-	# np.float([kp[idx].pt for idx in range(0, len(kp))]).reshape(-1, 1, 2)
-	# pts = ([keypoints[idx].pt for idx in range(0, len(keypoints))])
-
-	# for i in pts:
-
-	# 	print (i)
 
 	pts= cv2.KeyPoint_convert(keypoints)
 	# pts = pts.reshape(-1, 1, 2)
@@ -143,16 +125,6 @@ def blobScan(image):
     '152':'5-6 '
 }
 
-	# for k,v in dict.items():
-	# 	for i in range(len(pts)):
-	# 		for j in range(len(pts[0])):
-	# 			# ind=0 instead find the index of the key at point where its equal then 
-	# 			# use this index to find the key value, using formular value_at_index = dic.values()[index]
-	# 			if int(float(pts[i][j])) == int(float(k)):
-	# 			# if j == k:
-	# 				print("systems go")
-	# 			else :
-	# 				print(pts[i][j])
 	values =[]
     # ar = []
     # ar2 =[]
@@ -199,13 +171,4 @@ def blobScan(image):
 	    			values.append(dict.get(s))
 					
 				
-
-
-
-
-    # print(test)
-    # print(pts)
-	# print(pts)
-	# cv2.imshow("Keypoints", im_with_keypoints)
-	# cv2.waitKey(0)
 	return values
