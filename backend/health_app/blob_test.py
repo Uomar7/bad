@@ -108,8 +108,10 @@ def blobScan():
     # pts = pts.reshape(-1, 1, 2)
     # print(pts)
     # print(keypoints[0].pt)making a two dimensional lis to a one dimensional list python
-    dict = { '62.25076' : 'male','388.3149' : 'first visit'
-    }
+    dict = { '62.25076' : 'Gender: male','225.93164 ' : 'first visit','276.41397':'age >12','391.12973':'HIV -ve','148.27808':'since last visit: infection',
+	'240.00154':'sickling test : -ve', '97.54964':'HPLC : Not done','432.18884':'Management : Antibiotic','388.3149':'Admission'
+
+	}
     # for k,v in dict.items():
     #   for i in range(len(pts)):
     #       for j in range(len(pts[0])):

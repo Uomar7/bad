@@ -57,12 +57,8 @@ def profile(request):
     return render(request, 'profile-page.html', {"profile": profile, "form": form})
 
 # ! view function to view different forms and add a form or scan a form.
-<<<<<<< HEAD
-@login_required(login_url='/accounts/login/')
-=======
 
 
->>>>>>> 006317ab5d11082210d6f62e8103f5156bd7bfca
 def scan(request):
     # dict = {'23.51547': 'male', '388.3149': 'first visit'
 

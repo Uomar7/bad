@@ -1,23 +1,10 @@
-<<<<<<< HEAD
 from transform import four_point_transform
-=======
-from .transform import four_point_transform
->>>>>>> 006317ab5d11082210d6f62e8103f5156bd7bfca
 from skimage.filters import threshold_local
 import numpy as np
 import argparse
 import cv2
 import imutils
 from imutils import contours
-
-<<<<<<< HEAD
-# construct the argument parser and parse the arguments
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-i", "--image", required = True,
-# 	help = "Path to the image to be scanned")
-# args = vars(ap.parse_args())
-
-
 
 # load the image and compute the ratio of the old height
 # to the new height, clone it, and resize it
@@ -130,7 +117,6 @@ pts= cv2.KeyPoint_convert(keypoints)
 print(pts)
 cv2.imshow("Keypoints", im_with_keypoints)
 cv2.waitKey(0)
-=======
 def blobScan(image):
 	# construct the argument parser and parse the arguments
 	# ap = argparse.ArgumentParser()
@@ -180,13 +166,15 @@ def blobScan(image):
 	# view of the original image
 	paper = four_point_transform(image, screenCnt.reshape(4, 2))
 	warped = four_point_transform(orig, screenCnt.reshape(4, 2) * ratio)
-
+	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,10,
+	param1=50,param2=12,minRadius=0,maxRadius=0)
 
 	warped =imutils.resize(warped , height=650)
 
 	#identify circles ..........
 	warped = cv2.cvtColor(warped,cv2.COLOR_BGR2GRAY)
 	warped = cv2.GaussianBlur(warped, (5, 5), 0)
+
 	# Read image
 	 # Setup SimpleBlobDetector parameters.
 	params = cv2.SimpleBlobDetector_Params()
@@ -207,6 +195,9 @@ def blobScan(image):
 	# params.filterByConvexity = True
 	# params.minConvexity = 0.87
 	
+
+	#filter by size
+
 	# # Filter by Inertia
 	# params.filterByInertia = True
 	# params.minInertiaRatio = 0.01
@@ -286,4 +277,3 @@ def blobScan(image):
 	# cv2.imshow("Keypoints", im_with_keypoints)
 	# cv2.waitKey(0)
 	return values
->>>>>>> 006317ab5d11082210d6f62e8103f5156bd7bfca
