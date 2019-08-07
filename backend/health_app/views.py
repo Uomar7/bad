@@ -11,7 +11,7 @@ from rest_framework.views import APIView
 from django.http import JsonResponse
 from django.db import transaction
 from rest_framework import status
-from .blob import blobScan
+from .blobb import blobScan
 
 # @login_required(login_url='/accounts/login/')
 
@@ -60,24 +60,23 @@ def profile(request):
 
 
 def scan(request):
-    # dict = {'23.51547': 'male', '388.3149': 'first visit'
-
-    #         }
+    
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     forms = Original_image.objects.all()
     print(len(forms))
-    if len(forms)>1:
+    if len(forms)>=1:
         
-        im=forms[1]
+        im=forms[0]
         image = im.image.url
-        print(image)
+        # print(image)
         image= image[1:]
-        print(image)
+        # print(image)
         # s=str(image)
         print("no")
         # print(image[1:])
         pts = blobScan(image)
+        pts = list(dict.fromkeys(pts))
         print(pts)
     else:
         pts=['0','0']

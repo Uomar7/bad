@@ -5,6 +5,7 @@ import argparse
 import cv2
 import imutils
 from imutils import contours
+import math
 
 def blobScan(image):
 	# construct the argument parser and parse the arguments
@@ -128,10 +129,20 @@ def blobScan(image):
 	# print(pts)
 	# print(keypoints[0].pt)making a two dimensional lis to a one dimensional list python
 
-	dict = { '62.25076' : 'Gender: male','225.93164 ' : 'Visit: first','276.41397':'Age: >12','391.12973':'HIV status: -ve','148.27808':'Since last visit: infection',
-	'240.00154':'Sickling test: -ve', '97.54964':'HPLC: Not done','432.18884':'Management: Antibiotic','388.3149':'Recommendation: Admission'
+	dict = {
+    '62' : 'Male',
+    '108':'Female',
+    '290' : 'Follow up',
+    '227' : 'first visit',
+    '271':'>12',
+    '46':'6-12',
+    '349':'+ve',
+    '393':'-ve',
+    '144':'Stroke',
+    '365':'3-4 ',
+    '152':'5-6 '
+}
 
-	}
 	# for k,v in dict.items():
 	# 	for i in range(len(pts)):
 	# 		for j in range(len(pts[0])):
@@ -143,20 +154,57 @@ def blobScan(image):
 	# 			else :
 	# 				print(pts[i][j])
 	values =[]
+    # ar = []
+    # ar2 =[]
 	for k,v in dict.items():
-		for i in range(len(pts)):
-			for j in range(len(pts[0])):
-				
-				if int(float(pts[i][j]))==int(float(k)):
-					st = str(pts[i][j])
-					values.append(dict.get(st))
+	    for i in range(len(pts)):
+	    	for j in range(len(pts[0])):
+	    		ind=0
+	    		# print(pts[i][j])
+	    		x = int(float(pts[i][j]))
+	    		z = int(float(k))
+	    		t = math.floor(x)
+    
+	    		u = math.floor(z)
+	    		# ar.append(t)
+	    		# ar2.append(u)
+	    		variation=t-2
+	    		plusvar=t+2
+	    		var=t-1
+	    		plus=t+1
+
+	    		# print("key")
+	    		# print(u)
+	    		if t==u:
+	    			st = str(t)
+    
+	    			values.append(dict.get(st))
+	    			# print(dict.get(st))
+	    			ind += 1
+	    		if variation==u:
+                
+	    			s =str(variation)
+	    			values.append(dict.get(s))
+	    		if plusvar==u:
+                
+	    			s =str(plusvar)
+	    			values.append(dict.get(s))
+	    		if plus==u:
+                
+	    			s =str(plus)
+	    			values.append(dict.get(s))
+	    		if var==u:
+                
+	    			s =str(var)
+	    			values.append(dict.get(s))
 					
 				
 
 
 
 
-
+    # print(test)
+    # print(pts)
 	# print(pts)
 	# cv2.imshow("Keypoints", im_with_keypoints)
 	# cv2.waitKey(0)
