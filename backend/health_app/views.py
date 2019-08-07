@@ -104,6 +104,10 @@ def delete_item(request,image_id):
     
     return redirect('scan')
 
+@login_required(login_url='/accounts/login')
+def stats(request):
+    return render(request,'stats.html')
+
 
 
 # ! ------------------------END VIEWS---------------------------------

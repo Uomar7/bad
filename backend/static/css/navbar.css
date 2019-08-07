@@ -4,22 +4,22 @@ nav {
 }
 
 .navbar-brand {
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: 900;
     letter-spacing: 3px;
 }
 
 .navbar-brand:hover {
-    color: whitesmoke;
+    color: black;
 }
 
 .nav-link {
-    color: rgb(0, 0, 0);
+    color: whitesmoke;
     letter-spacing: 1px;
 }
 
 .nav-link:hover {
-    color:whitesmoke;
+    color: black;
     transition: .2s;
     transform: scale(1.05,1.05);
     font-weight: bold;

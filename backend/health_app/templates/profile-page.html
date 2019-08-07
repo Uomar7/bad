@@ -11,39 +11,33 @@
 <br><br><br>
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-sm-12">
-      <div class="card">
-        <img src="{{profile.pic.url}}" alt="" width="240px" class="img-fluid card-img-top">
-        <div class="card-body">
-          {% if profile.position == 'Doctor' %}
-          <h4>Dr. {{profile.last_name}}</h4>
-          {% else %}
-          <h3>{{ user.username }}</h3>
-          {% endif %}
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
 
-          <p>Position: {{profile.position}}</p>
-          <p>Hospital: {{profile.hospital_name}}</p>
-          <p>Work ID: {{profile.work_id}}</p>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="col-md-2"></div>
-    <div class="col-md-6 col-sm-12">
-      <div class="row">
-
-        <div class="card about">
-          <h5 class="card-header">About</h5>
-          <div class="card-body">
-            <p class="card-text">{{profile.bio}}</p>
+        <div class="card">
+            <img src="{{profile.pic.url}}" alt="" width="240px" class="img-fluid card-img-top">
+            <div class="card-body">
+              {% if profile.position == 'Doctor' %}
+              <h4>Dr. {{profile.last_name}}</h4>
+              {% else %}
+              <h3>{{ user.username }}</h3>
+              {% endif %}
+      
+              <p class="card-text">Position: {{profile.position}}</p>
+              <p class="card-text">Hospital: {{profile.hospital_name}}</p>
+              <p class="card-text">Work ID: {{profile.work_id}}</p>
+              <h4>About</h4>
+              <p class="card-text">{{profile.bio}}</p>
+              <a href="" data-toggle="modal" data-target="#modalLoginForm" class="btn btn-sm">Edit profile</a>
+            </div>
           </div>
 
-          <a href="" data-toggle="modal" data-target="#modalLoginForm" class="btn btn-sm">Edit profile</a>
-        </div>
-
-
-      </div>
     </div>
+    <div class="col-md-3"></div>
+    
+
+    <br>
+
     <br>
     <hr>
     <div class="row">
