@@ -28,13 +28,14 @@
                     <p class="card-text">No forms yet</p>
                     {% endfor %}
                 </ul>
+                
                 <hr>
                 <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Upload form</a>
                
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-heading heady">Form image</h4>
@@ -51,6 +52,20 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-heading heady">details</h4>
+                    </div>
+                    <div class="card-body tab-content" id="myTabContent">
+                            {% for pt in pts %}
+                            <p>{{pt}}</p>
+                            {% empty %}
+                        <p class="card-text">No forms yet</p>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
 
     </div>
 </div>
