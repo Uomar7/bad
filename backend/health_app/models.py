@@ -30,27 +30,17 @@ class Profile(models.Model):
         return self.first_name
 
 class Original_image(models.Model):
-    sickness_form = models.CharField(max_length = 82)
+    fname = models.CharField(max_length = 30)
+    lname = models.CharField(max_length=30)
+    gender = models.CharField(max_length=30)
+    visit = models.CharField(max_length=50)
+    age = models.CharField(max_length=30)
+    hiv = models.CharField(max_length=5)
     image = models.ImageField(upload_to = 'forms/')
     posted_by = models.ForeignKey(Profile, related_name='forms')
 
     def __str__(self):
         return self.sickness_form
-    
-    # def delete_item(request,id):
-    # item = Original_image.objects.get(id = id)
-    # item.delete()
-
-class Extracted_data(models.Model):
-    original = models.ForeignKey(Original_image,related_name='extracts')
-    sickness_name = models.CharField(max_length = 60)
-    age = models.IntegerField()
-    contents = models.TextField()
-    posted_by = models.ForeignKey(Profile)
-
-    def __str__(self):
-        return self.sickness_name
-
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

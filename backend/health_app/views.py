@@ -1,5 +1,5 @@
-from .serializers import OriginalSerializer, ProfileSerializer, ExtractedSerializer, UserSerializer
-from .forms import NewProfileForm, NewOriginalForm, ExtractedForm
+from .serializers import ProfileSerializer, UserSerializer
+from .forms import NewProfileForm, NewOriginalForm
 from .models import Profile,  Original_image
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -87,6 +87,10 @@ def scan(request):
 
             new = form.save(commit=False)
             new.posted_by = profile
+            new.gender = pts[0]
+            new.visit = pts[1]
+            new.age = pts[2]
+            new.hiv = pts[3]
             new.save()
 
             return redirect('scan')
@@ -100,6 +104,8 @@ def delete_item(request, image_id):
     # item = Original_image.objects.get(id =image_id)
     if request.user:
         Original_image.objects.get(id=image_id).delete()
+    
+    return redirect('scan')
 
 @login_required(login_url='/accounts/login')
 def stats(request):
@@ -147,40 +153,22 @@ class ProfileList(APIView):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class OriginalList(APIView):
-    permission_classes = (IsAdminOrReadOnly,)
+# class OriginalList(APIView):
+#     permission_classes = (IsAdminOrReadOnly,)
 
-    def get(self, request, format=None):
-        all_originals = Original_image.objects.all()
-        serializers = OriginalSerializer(all_originals, many=True)
-        return Response(serializers.data)
+#     def get(self, request, format=None):
+#         all_originals = Original_image.objects.all()
+#         serializers = OriginalSerializer(all_originals, many=True)
+#         return Response(serializers.data)
 
-    def post(self, request, format=None):
-        serializers = OriginalSerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class ExtractedList(APIView):
-    permission_classes = (IsAdminOrReadOnly,)
-
-    def get(self, request, format=None):
-        all_extracts = Extracted_data.objects.all()
-        serializers = ExtractedSerializer(all_extracts, many=True)
-        return Response(serializers.data)
-
-    def post(self, request, format=None):
-        serializers = ExtractedSerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def post(self, request, format=None):
+#         serializers = OriginalSerializer(data=request.data)
+#         if serializers.is_valid():
+#             serializers.save()
+#             return Response(serializers.data, status=status.HTTP_201_CREATED)
+#         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # * Descriptions for all objects
-
-
 class ProfileDescr(APIView):
     permission_classes = (IsAdminOrReadOnly,)
 
@@ -214,65 +202,33 @@ class ProfileDescr(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class OriginalDescr(APIView):
-    permission_classes = (IsAdminOrReadOnly,)
+# class OriginalDescr(APIView):
+#     permission_classes = (IsAdminOrReadOnly,)
 
-    def get_original(self, pk):
-        try:
-            original = Original_image.objects.get(pk=pk)
-            return original
+#     def get_original(self, pk):
+#         try:
+#             original = Original_image.objects.get(pk=pk)
+#             return original
 
-        except Original_image.DoesNotExist:
-            return Http404
+#         except Original_image.DoesNotExist:
+#             return Http404
 
-    def get(self, request, pk, format=None):
-        orig = self.get_original(pk)
-        serializers = OriginalSerializer(orig)
-        return Response(serializers.data)
+#     def get(self, request, pk, format=None):
+#         orig = self.get_original(pk)
+#         serializers = OriginalSerializer(orig)
+#         return Response(serializers.data)
 
-    def put(self, request, pk, format=None):
-        original = self.get_original(pk)
-        serializers = OriginalSerializer(original, request.data)
+#     def put(self, request, pk, format=None):
+#         original = self.get_original(pk)
+#         serializers = OriginalSerializer(original, request.data)
 
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        else:
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+#         if serializers.is_valid():
+#             serializers.save()
+#             return Response(serializers.data)
+#         else:
+#             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
-        original = self.get_original(pk)
-        original.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class ExtractDescr(APIView):
-    permission_classes = (IsAdminOrReadOnly,)
-
-    def get_extract(self, pk):
-        try:
-            extract = Extracted_data.objects.get(pk=pk)
-            return extract
-
-        except Extracted_data.DoesNotExist:
-            return Http404
-
-    def get(self, request, pk, format=None):
-        extract = self.get_extract(pk)
-        serializers = ExtractedSerializer(extract)
-        return Response(serializers.data)
-
-    def put(self, request, pk, format=None):
-        extract = self.get_extract(pk)
-        serializers = ExtractedSerializer(extract, request.data)
-
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        else:
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        extract = self.get_extract(pk)
-        extract.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     def delete(self, request, pk, format=None):
+#         original = self.get_original(pk)
+#         original.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)

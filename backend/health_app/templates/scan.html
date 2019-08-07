@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load bootstrap4 %}
 {% load staticfiles %}
 {% load static %}
@@ -21,7 +20,7 @@
                 </div>
                 <ul>
                     {% for form in forms %}
-                    <li class="card-text">{{form.sickness_form}} <a id="{{form.id}}-tab" data-toggle="tab"
+                    <li class="card-text">{{form.fname}} {{form.lname}} <a id="{{form.id}}-tab" data-toggle="tab"
                             href="#{{form.id}}" role="tab" aria-controls="{{form.id}}" aria-selected="true"
                             class="boot btn btn-sm">view</a></li>
                     {% empty %}
@@ -88,25 +87,6 @@
         </div>
     </div>
 </div>
-
-<!-- <div class=" modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="card">
-                <h4 class="card-header heady">Scan Form</4>
-                    <div class="card-body">
-                        <form action="{% url 'scan' %}" method="post" enctype="multipart/form-data">
-                            {%csrf_token%}
-
-                            {% bootstrap_form scanform layout='inline' %}
-                            <input type="submit" class="btn btn-success btn-sm" value="Scan Form">
-                        </form>
-                    </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 {% endblock %}
