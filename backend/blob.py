@@ -16,7 +16,7 @@ from imutils import contours
 
 # load the image and compute the ratio of the old height
 # to the new height, clone it, and resize it
-image = cv2.imread("img/red.jpg")
+image = cv2.imread("img/answered-sheet-photo.jpg")
 ratio = image.shape[0] / 500.0
 orig = image.copy()
 image = imutils.resize(image, height = 500)
@@ -70,7 +70,7 @@ params.minArea = 100
  
 # Filter by Circularity
 params.filterByCircularity = True
-params.minCircularity = 0.8
+params.minCircularity = 0.1
  
 # # Filter by Convexity
 # params.filterByConvexity = True
