@@ -114,7 +114,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pro',
-        'USER': 'klaus',
+        'USER': 'kenneth',
     'PASSWORD':'healthenet',
     }
 }

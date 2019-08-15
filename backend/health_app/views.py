@@ -1,6 +1,6 @@
-from .serializers import OriginalSerializer, ProfileSerializer, ExtractedSerializer, UserSerializer
-from .forms import NewProfileForm, NewOriginalForm, Extracted_data
-from .models import Profile, Extracted_data, Original_image
+from .serializers import OriginalSerializer,ProfileSerializer, ExtractedSerializer,UserSerializer
+from .forms import NewProfileForm,NewOriginalForm,ExtractedForm, ScannForm
+from .models import Profile, Extracted_data, Original_image 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
@@ -10,8 +10,9 @@ from .permissions import IsAdminOrReadOnly
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from django.db import transaction
-from rest_framework import status
-from .blob import blobScan
+# from rest_framework import 
+from .scann import extract
+
 
 # @login_required(login_url='/accounts/login/')
 
@@ -104,6 +105,13 @@ def scan(request):
     # 			else :
     # 				ind+=1
 
+
+#*--------------------------UPLOAD NEW FORM--------------------------- 
+
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    forms = Original_image.objects.all()
+    
     if request.method == 'POST':
         form = NewOriginalForm(request.POST, request.FILES)
         if form.is_valid():
@@ -131,6 +139,23 @@ def scan(request):
         form = NewOriginalForm()
     return render(request, 'scan.html', {'profile': profile, 'form': form, 'forms': forms, 'pts':pts})
 
+
+#! -----------------------------SCAN FORM--------------------------------
+    
+    answers = []
+    if request.method == 'POST':
+        scanform = ScannForm(request.POST,request.FILES)
+        if form.is_valid():
+            print('------------------------------------------------')
+            ima = scanform.cleaned_data['image']
+            vals = extract(ima)
+            answers.extend(vals)
+            print(vals)
+    
+    else:
+        scanform = ScannForm()
+
+    return render(request, 'scan.html',{'profile':profile,'form':form,'forms':forms, 'answers':answers, 'scanform':scanform})    
 
 def delete_item(request, image_id):
     # current_user = request.user

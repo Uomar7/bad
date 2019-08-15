@@ -30,7 +30,8 @@
                 </ul>
                 
                 <hr>
-                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Scan form</a>
+                <a href="" data-toggle="modal" data-target="#modalContactForm" class="boot2 btn btn-sm">Upload form</a>
+                <a href="" data-toggle="modal" data-target="#modalContact" class="boot2 btn btn-sm">Scan form</a>
             </div>
         </div>
 
@@ -43,11 +44,7 @@
                     {% for form in forms %}
                     <div class="pic tab-pane fade show active" id="{{ form.id }}" role="tabpanel" aria-labelledby="{{ form.id }}-tab">
                         <img src="{{form.image.url}}" class="img-fluid" alt="">
-<<<<<<< HEAD
-                        <a href="{% url 'delete' form.id %}" style="color: red;" class="btn btn-sm"> Delete </a>
-=======
                         <a href="{% url 'delete' form.id %}" style="color:red"class="btn btn-sm">delete</a>
->>>>>>> 006317ab5d11082210d6f62e8103f5156bd7bfca
                     </div>
                     {% empty %}
                     <p class="card-text">No forms yet</p>
@@ -85,6 +82,25 @@
 
                             {% bootstrap_form form layout='inline' %}
                             <input type="submit" class="btn btn-success btn-sm" value="Add Form">
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <h4 class="card-header heady">Scan Form</4>
+                    <div class="card-body">
+                        <form action="{% url 'scan' %}" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+
+                            {% bootstrap_form scanform layout='inline' %}
+                            <input type="submit" class="btn btn-success btn-sm" value="Scan Form">
                         </form>
                     </div>
             </div>
